@@ -271,7 +271,7 @@
             <!-- Static bottom bar: scroll indicator -->
             <div class="tp-static-layers">
                 <!-- Scroll-down indicator -->
-                <div class="tp-caption tp-static-layer"
+                <div id="tbc-scroll-down" class="tp-caption tp-static-layer"
                     data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                     data-y="['bottom','bottom','bottom','bottom']" data-voffset="['18','14','12','10']"
                     data-width="24" data-height="24"
@@ -279,7 +279,7 @@
                     data-basealign="slide" data-responsive_offset="off" data-responsive="off"
                     data-startslide="0" data-endslide="2"
                     data-frames='[{"from":"y:50px;opacity:0;","speed":800,"to":"o:1;","delay":1200,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
-                    style="z-index:50; font-size:20px; color:rgba(255,255,255,0.5); line-height:24px;">
+                    style="z-index:50; font-size:20px; color:rgba(255,255,255,0.5); line-height:24px; cursor:pointer;">
                     <i class="fa fa-chevron-down"></i>
                 </div>
             </div>
@@ -374,6 +374,39 @@
                     }
                 });
             }
+
+            // Smooth scroll para botones del slider (independiente de RS data-actions)
+            tpj(document).on("click", ".TBC-Btn[data-actions]", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var rawActions = tpj(this).attr("data-actions");
+                if (!rawActions) return;
+                try {
+                    var actions = JSON.parse(rawActions);
+                    actions.forEach(function(action) {
+                        if (action.action === "simplelink" && action.url && action.url.charAt(0) === "#") {
+                            var $target = tpj(action.url);
+                            if ($target.length) {
+                                var headerH = tpj("#header").outerHeight() || 0;
+                                tpj("html, body").stop(true).animate({
+                                    scrollTop: $target.offset().top - headerH
+                                }, 900, "easeInOutExpo");
+                            }
+                        }
+                    });
+                } catch(err) {}
+            });
+
+            // Flecha scroll-down → navegar a #nosotros
+            tpj(document).on("click", "#tbc-scroll-down, #tbc-scroll-down i", function() {
+                var $target = tpj("#nosotros");
+                if ($target.length) {
+                    var headerH = tpj("#header").outerHeight() || 0;
+                    tpj("html, body").stop(true).animate({
+                        scrollTop: $target.offset().top - headerH
+                    }, 900, "easeInOutExpo");
+                }
+            });
         });
     </script>
 </section>

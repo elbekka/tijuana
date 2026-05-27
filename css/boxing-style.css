@@ -210,7 +210,6 @@ img { display: block; max-width: 100%; }
   color: #ffffff !important;
   border: 2px solid rgba(255,255,255,0.7) !important;
   border-radius: 0 !important;
-  padding: 14px 40px !important;
   transition: all 0.3s !important;
   cursor: pointer;
 }
@@ -1125,4 +1124,20 @@ img { display: block; max-width: 100%; }
     grid-row: span 1;
     grid-column: span 1;
   }
+}
+
+
+/* ════════════════════════════════════════
+   SCROLL-DOWN ARROW
+═══════════════════════════════════════ */
+#tbc-scroll-down {
+  cursor: pointer !important;
+  animation: tbc-bounce 2s ease-in-out infinite;
+}
+@keyframes tbc-bounce {
+  0%, 100% { transform: translateY(0);   opacity: 0.5; }
+  50%       { transform: translateY(7px); opacity: 1;   }
+}
+#tbc-scroll-down:hover {
+  color: #E63946 !important;
 }
