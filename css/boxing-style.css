@@ -1128,6 +1128,140 @@ img { display: block; max-width: 100%; }
 
 
 /* ════════════════════════════════════════
+   8. HORARIOS
+═══════════════════════════════════════ */
+.schedule__hours {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: clamp(40px, 6vw, 64px);
+}
+.schedule__hours-card {
+  background: var(--dark-4);
+  padding: 36px 28px;
+  border-top: 3px solid var(--red);
+  text-align: center;
+  transition: background var(--transition);
+}
+.schedule__hours-card:hover { background: #252525; }
+.schedule__hours-card--closed {
+  border-top-color: rgba(255,255,255,0.1);
+  opacity: 0.45;
+}
+.schedule__hours-day {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 14px;
+}
+.schedule__hours-card--closed .schedule__hours-day { color: var(--muted); }
+.schedule__hours-time {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+.schedule__hours-note {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.schedule__table-wrap {
+  overflow-x: auto;
+  margin-bottom: 0;
+}
+.schedule__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+.schedule__table thead tr {
+  background: var(--dark-4);
+  border-bottom: 2px solid var(--red);
+}
+.schedule__table thead th {
+  padding: 16px 14px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+  text-align: center;
+}
+.schedule__table thead th:first-child {
+  text-align: left;
+  min-width: 140px;
+}
+.schedule__table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.schedule__table tbody tr:last-child { border-bottom: none; }
+.schedule__table tbody tr:hover { background: rgba(255,255,255,0.03); }
+.schedule__table tbody td {
+  padding: 16px 14px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 300;
+  text-align: center;
+  line-height: 1.9;
+  vertical-align: middle;
+  font-size: 12px;
+}
+.schedule__class-name {
+  font-family: var(--font-display) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px !important;
+  color: var(--white) !important;
+  text-align: left !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.schedule__private {
+  color: rgba(255,255,255,0.28) !important;
+  font-style: italic;
+  font-size: 12px !important;
+  letter-spacing: 0.5px;
+}
+.schedule__note {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  margin-top: clamp(28px, 4vw, 44px);
+  line-height: 1.8;
+}
+.schedule__link {
+  color: var(--red);
+  transition: color var(--transition);
+}
+.schedule__link:hover { color: var(--red-bright); }
+
+@media (max-width: 1024px) {
+  .schedule__hours { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+  .schedule__hours { grid-template-columns: 1fr; }
+  .schedule__hours-card { padding: 24px 20px; }
+  .schedule__table thead th,
+  .schedule__table tbody td { padding: 12px 8px; font-size: 11px; }
+  .schedule__class-name { font-size: 11px !important; min-width: 90px; }
+}
+
+
+/* ════════════════════════════════════════
    SCROLL-DOWN ARROW
 ═══════════════════════════════════════ */
 #tbc-scroll-down {
