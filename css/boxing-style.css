@@ -813,60 +813,40 @@ img { display: block; max-width: 100%; }
   color: var(--white);
 }
 
-/* Form */
-.contact__form {
-  display: grid;
-  gap: 3px;
+/* Map + WhatsApp */
+.contact__map-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3px;
-}
-.tbc-input,
-.tbc-select,
-.tbc-textarea {
+.contact__map {
+  display: block;
   width: 100%;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 0;
-  color: var(--white);
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 300;
-  padding: 16px 18px;
-  outline: none;
-  transition: border-color var(--transition), background var(--transition);
-  -webkit-appearance: none;
+  height: 360px;
+  filter: grayscale(100%) contrast(1.05) brightness(0.85);
+  transition: filter 0.4s;
 }
-.tbc-input::placeholder,
-.tbc-textarea::placeholder {
-  color: rgba(255,255,255,0.25);
-}
-.tbc-input:focus,
-.tbc-textarea:focus,
-.tbc-select:focus {
-  border-color: var(--red);
-  background: rgba(255,255,255,0.06);
-}
-.tbc-select option {
-  background: var(--dark-3);
-  color: var(--white);
-}
-.tbc-textarea {
-  height: 130px;
-  resize: none;
-}
-.tbc-btn--submit {
-  width: 100%;
-  text-align: center;
+.contact__map:hover { filter: grayscale(40%) contrast(1.05) brightness(0.9); }
+.contact__wa-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 16px;
+  gap: 12px;
+  background: #25D366;
+  color: #ffffff;
+  font-family: var(--font-display);
   font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 18px 36px;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition);
+  text-decoration: none;
 }
+.contact__wa-btn i { font-size: 22px; }
+.contact__wa-btn:hover { background: #1fba58; color: #ffffff; }
 
 
 /* ════════════════════════════════════════
