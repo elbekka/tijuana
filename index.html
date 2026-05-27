@@ -372,10 +372,14 @@
                 });
             }
 
-            // Smooth scroll para botones del slider
-            tpj(document).on("click", ".TBC-Btn[data-scroll-to]", function(e) {
+            // Smooth scroll para botones del slider (click + touchend para móvil)
+            var tbcBtnScrolling = false;
+            tpj(document).on("click touchend", ".TBC-Btn[data-scroll-to]", function(e) {
                 e.preventDefault();
                 e.stopPropagation();
+                if (tbcBtnScrolling) return;
+                tbcBtnScrolling = true;
+                setTimeout(function() { tbcBtnScrolling = false; }, 1000);
                 var target = tpj(this).attr("data-scroll-to");
                 if (!target) return;
                 var $target = tpj(target);
@@ -534,13 +538,13 @@
         <div class="schedule__hours" data-animate="fadeInUp">
             <div class="schedule__hours-card">
                 <div class="schedule__hours-day">Lun — Vie</div>
-                <div class="schedule__hours-time">08:00 – 23:00</div>
+                <div class="schedule__hours-time">10:00 – 21:30</div>
                 <div class="schedule__hours-note">Clases disponibles todo el día</div>
             </div>
-            <div class="schedule__hours-card">
+            <div class="schedule__hours-card schedule__hours-card--closed">
                 <div class="schedule__hours-day">Sábado</div>
-                <div class="schedule__hours-time">09:00 – 14:00</div>
-                <div class="schedule__hours-note">Mañanas de entrenamiento</div>
+                <div class="schedule__hours-time">Cerrado</div>
+                <div class="schedule__hours-note">Sin actividad</div>
             </div>
             <div class="schedule__hours-card schedule__hours-card--closed">
                 <div class="schedule__hours-day">Domingo</div>
@@ -560,18 +564,16 @@
                         <th>Mié</th>
                         <th>Jue</th>
                         <th>Vie</th>
-                        <th>Sáb</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="schedule__class-name">Boxeo Clásico</td>
-                        <td>08:00<br>19:00<br>21:00</td>
-                        <td>08:00<br>19:00</td>
-                        <td>08:00<br>19:00<br>21:00</td>
-                        <td>08:00<br>19:00</td>
-                        <td>08:00<br>19:00<br>21:00</td>
-                        <td>—</td>
+                        <td>10:00<br>19:00<br>21:00</td>
+                        <td>10:00<br>19:00</td>
+                        <td>10:00<br>19:00<br>21:00</td>
+                        <td>10:00<br>19:00</td>
+                        <td>10:00<br>19:00<br>21:00</td>
                     </tr>
                     <tr>
                         <td class="schedule__class-name">Kickboxing</td>
@@ -580,7 +582,6 @@
                         <td>20:00</td>
                         <td>10:00</td>
                         <td>20:00</td>
-                        <td>—</td>
                     </tr>
                     <tr>
                         <td class="schedule__class-name">Box Fitness</td>
@@ -589,7 +590,6 @@
                         <td>17:00</td>
                         <td>—</td>
                         <td>17:00</td>
-                        <td>09:00<br>11:00</td>
                     </tr>
                     <tr>
                         <td class="schedule__class-name">Kids Boxing</td>
@@ -598,11 +598,10 @@
                         <td>17:00</td>
                         <td>—</td>
                         <td>17:00</td>
-                        <td>—</td>
                     </tr>
                     <tr>
                         <td class="schedule__class-name">Privadas</td>
-                        <td colspan="6" class="schedule__private">Previa cita — Disponible toda la semana</td>
+                        <td colspan="5" class="schedule__private">Previa cita — Disponible de lunes a viernes</td>
                     </tr>
                 </tbody>
             </table>
@@ -762,7 +761,7 @@
                     <div class="contact__info-icon"><i class="fa fa-clock-o"></i></div>
                     <div>
                         <span class="contact__info-label">Horarios</span>
-                        <p class="contact__info-text">Lun–Vie: 8:00 – 23:00<br>Sáb: 9:00 – 14:00</p>
+                        <p class="contact__info-text">Lun–Vie: 10:00 – 21:30<br>Sáb–Dom: Cerrado</p>
                     </div>
                 </div>
                 <div class="contact__socials">
@@ -833,7 +832,7 @@
                 <div class="tbc-footer__col-title">Info</div>
                 <div class="tbc-footer__contact-item">
                     <i class="fa fa-clock-o"></i>
-                    <span>Lun–Vie: 6:00–22:00<br>Sáb–Dom: 8:00–18:00</span>
+                    <span>Lun–Vie: 10:00–21:30<br>Sáb–Dom: Cerrado</span>
                 </div>
                 <div class="tbc-footer__contact-item">
                     <i class="fa fa-phone"></i>
