@@ -146,6 +146,7 @@
                         data-textAlign="['left','left','left','left']"
                         data-paddingtop="[13,12,12,11]" data-paddingright="[36,32,28,24]" data-paddingbottom="[13,12,12,11]" data-paddingleft="[36,32,28,24]"
                         data-scroll-to="#membresias"
+                        onclick="tbcScrollTo('#membresias'); return false;"
                         style="z-index:9; white-space:nowrap; cursor:pointer;">ÚNETE AHORA</div>
                 </li>
 
@@ -286,6 +287,13 @@
     </div>
 
     <script type="text/javascript">
+        function tbcScrollTo(targetId) {
+            var el = document.querySelector(targetId);
+            if (!el) return;
+            var header = document.getElementById('header');
+            var offset = el.getBoundingClientRect().top + window.pageYOffset - (header ? header.offsetHeight : 0);
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
         var tpj = jQuery;
         var revapi_tbc;
         tpj(document).ready(function() {
